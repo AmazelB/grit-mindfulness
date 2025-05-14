@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grit-Mindfulness Scale</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Grit-Mindfulness Scale</h1>
+  <form id="gritForm">
+    <div class="question">
+      <label>1. I finish whatever I begin.</label><br>
+      <select name="q1">
+        <option value="5">Very much like me</option>
+        <option value="4">Mostly like me</option>
+        <option value="3">Somewhat like me</option>
+        <option value="2">Not much like me</option>
+        <option value="1">Not like me at all</option>
+      </select>
+    </div>
+    <div class="question">
+      <label>2. I can stay focused on one task for a long period of time.</label><br>
+      <select name="q2">
+        <option value="5">Very much like me</option>
+        <option value="4">Mostly like me</option>
+        <option value="3">Somewhat like me</option>
+        <option value="2">Not much like me</option>
+        <option value="1">Not like me at all</option>
+      </select>
+    </div>
+    <div class="question">
+      <label>3. I am mindful of my thoughts and feelings without judgment.</label><br>
+      <select name="q3">
+        <option value="5">Very much like me</option>
+        <option value="4">Mostly like me</option>
+        <option value="3">Somewhat like me</option>
+        <option value="2">Not much like me</option>
+        <option value="1">Not like me at all</option>
+      </select>
+    </div>
+    <div class="question">
+      <label>4. I set long-term goals and pursue them consistently.</label><br>
+      <select name="q4">
+        <option value="5">Very much like me</option>
+        <option value="4">Mostly like me</option>
+        <option value="3">Somewhat like me</option>
+        <option value="2">Not much like me</option>
+        <option value="1">Not like me at all</option>
+      </select>
+    </div>
+    <div class="question">
+      <label>5. I observe my thoughts without getting caught up in them.</label><br>
+      <select name="q5">
+        <option value="5">Very much like me</option>
+        <option value="4">Mostly like me</option>
+        <option value="3">Somewhat like me</option>
+        <option value="2">Not much like me</option>
+        <option value="1">Not like me at all</option>
+      </select>
+    </div>
+    <button type="button" onclick="calculateScore()">Submit</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function calculateScore() {
+      const form = document.getElementById("gritForm");
+      const formData = new FormData(form);
+      let total = 0;
+      let count = 0;
+
+      for (let value of formData.values()) {
+        total += parseInt(value);
+        count += 1;
+      }
+
+      let average = (total / count).toFixed(2);
+
+      document.getElementById("result").innerHTML =
+        `Your Grit-Mindfulness Score: ${average} (out of 5)`;
+    }
+  </script>
+</body>
+</html>
